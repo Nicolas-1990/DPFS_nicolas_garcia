@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1775740096291,
+    "name": "Nicolas",
+    "apellido": "Garcia",
+    "email": "nicolas@digitalhouse.com",
+    "password": "$2b$10$CRYCWJ0S78jFwndYpgAPZ.lOzduvzQfMg2libe1cJnGyOAKp.Fi5C",
+    "avatar": "1775740096282.jpeg",
+    "role": "admin"
+  }
+]

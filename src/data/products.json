@@ -1,0 +1,198 @@
+[
+  {
+    "id": 1,
+    "name": "TECLADO GAMER REDRAGON SHIVA K512 RGB",
+    "brand": "Redragon",
+    "price": 114800,
+    "images": [
+      "/images/teclado.jpg",
+      "/images/teclado-a.jpg",
+      "/images/teclado-b.jpg",
+      "/images/teclado-c.jpeg",
+      "/images/teclado-d.jpg"
+    ],
+    "description": "El teclado Redragon Shiva K512 RGB es un teclado mecánico diseñado para gamers que buscan una experiencia de juego inmersiva y personalizable. Con su iluminación RGB, ofrece una amplia gama de colores y efectos de iluminación para adaptarse a tu estilo de juego. Además, cuenta con teclas mecánicas de alta calidad que proporcionan una respuesta rápida y precisa, lo que lo convierte en una excelente opción para juegos competitivos.",
+    "category": "keyboard",
+    "colors": [
+      "Negro",
+      "Blanco"
+    ],
+    "stock": 9,
+    "type": "fisico",
+    "specs": {
+      "switch": "Membrana",
+      "iluminacion": "ARGB",
+      "conexion": "USB"
+    }
+  },
+  {
+    "id": 2,
+    "name": "MOUSE GAMER SENTEY GS-3312 LAYON",
+    "brand": "Sentey",
+    "price": 23000,
+    "images": [
+      "/images/mouse.jpg",
+      "/images/mouse-a.png",
+      "/images/mouse-b.jpg",
+      "/images/mouse-c.jpg",
+      "/images/mouse-d.jpg"
+    ],
+    "description": "Un diseño único, que cuenta con iluminación RGB LED. 16.8 millones de colores en su RAINBOW.",
+    "category": "mouse",
+    "colors": [
+      "Negro"
+    ],
+    "stock": 5,
+    "type": "fisico",
+    "specs": {
+      "sensor": "Óptico",
+      "iluminacion": "RGB",
+      "conexion": "USB"
+    }
+  },
+  {
+    "id": 3,
+    "name": "AURICULARES GAMER RAZER BARRACUDA",
+    "brand": "Razer",
+    "price": 295000,
+    "images": [
+      "/images/headsets.jpeg",
+      "/images/headsets-a.jpg",
+      "/images/headsets-b.jpg",
+      "/images/headsets-c.jpg",
+      "/images/headsets-d.jpg"
+    ],
+    "description": "Experimenta versatilidad y estilo de audio en cualquier lugar con los Razer Barracuda X Chroma. Con Razer SmartSwitch Dual Wireless, podrás alternar entre el juego y el uso móvil al instante con estos auriculares gaming RGB inalámbricos ligeros.",
+    "category": "headset",
+    "colors": [
+      "Negro",
+      "Blanco"
+    ],
+    "stock": 5,
+    "type": "fisico",
+    "specs": {
+      "iluminacion": "RGB",
+      "conexion": "bluetooth y USB",
+      "microfono": "Sí"
+    }
+  },
+  {
+    "id": 4,
+    "name": "EA SPORTS FC 26 Standard Edition",
+    "brand": "EA",
+    "price": 96500,
+    "images": [
+      "/images/juegopc.jpg",
+      "/images/juegopc-a.jpeg",
+      "/images/juegopc-b.jpeg",
+      "/images/juegopc-c.jpg",
+      "/images/juegopc-d.jpg"
+    ],
+    "description": "La edición estándar de EA FC 26 es perfecta para todos los aficionados al fútbol. Los entusiastas del deporte podrán disfrutar de una jugabilidad mejorada y una amplia variedad de modos que garantizan horas de entretenimiento. Además, la opción de multijugador permite competir con amigos o jugadores de todo el mundo, elevando la experiencia de juego a un nuevo nivel.",
+    "category": "Juegos PC",
+    "stock": "infinito",
+    "type": "digital",
+    "specs": {
+      "plataforma": "PC",
+      "formato": "Descarga digital"
+    }
+  },
+  {
+    "id": 5,
+    "name": "TECLADO GAMER MECANICO SENTEY GS-530 LED RGB",
+    "brand": "Sentey",
+    "price": 97500,
+    "images": [
+      "/images/teclado2.jpg",
+      "/images/teclado2-a.jpg",
+      "/images/teclado2-b.jpg",
+      "/images/teclado2-c.jpg",
+      "/images/teclado2-d.jpg"
+    ],
+    "description": "Este teclado Sentey de alto rendimiento permite que puedas disfrutar de horas ilimitadas de juegos. Está diseñado especialmente para que puedas expresar tanto tus habilidades como tu estilo. Podrás mejorar tu experiencia de gaming, ya seas un aficionado o todo un experto y hacer que tus jugadas alcancen otro nivel.",
+    "category": "keyboard",
+    "colors": [
+      "Negro"
+    ],
+    "stock": 12,
+    "type": "fisico",
+    "specs": {
+      "switch": "Outemu Purple",
+      "iluminacion": "RGB",
+      "conexion": "USB"
+    }
+  },
+  {
+    "id": 6,
+    "name": "MOUSE GAMER DE JUEGO REDRAGON GRIFFIN M607",
+    "brand": "Redragon",
+    "price": 27800,
+    "images": [
+      "/images/mouse2.jpg",
+      "/images/mouse2-a.jpg",
+      "/images/mouse2-b.jpg",
+      "/images/mouse2-c.jpg",
+      "/images/mouse2-d.jpg"
+    ],
+    "description": "El Griffin tiene un calce perfecto en la mano, con relieves curvilíneos y textura honeycomb sobre sus costados izquierdo y derecho, proporcionando un agarre cómodo para los dedos meñique, anular y pulgar, ideal para largas sesiones de uso.",
+    "category": "mouse",
+    "colors": [
+      "Negro",
+      "Blanco"
+    ],
+    "stock": 11,
+    "type": "fisico",
+    "specs": {
+      "sensor": "Óptico",
+      "iluminacion": "RGB",
+      "conexion": "USB"
+    }
+  },
+  {
+    "id": 7,
+    "name": "AURICULARES JBL QUANTUM",
+    "brand": "JBL",
+    "price": 79000,
+    "images": [
+      "/images/headsets2.jpg",
+      "/images/headsets2-a.jpg",
+      "/images/headsets2-b.jpg",
+      "/images/headsets2-c.jpg",
+      "/images/headsets2-d.jpg"
+    ],
+    "description": "Sumérgete en la experiencia de juego definitiva con el Auricular Headset Gamer JBL Quantum 100 M2. Diseñado para los gamers más exigentes, este headset ofrece un sonido envolvente que te permitirá escuchar cada detalle de tus partidas, desde los pasos de tus oponentes hasta los efectos sonoros más sutiles. Su diseño ergonómico garantiza comodidad durante largas sesiones de juego, permitiéndote concentrarte en lo que realmente importa: ganar.",
+    "category": "headset",
+    "colors": [
+      "Negro",
+      "Blanco"
+    ],
+    "stock": 9,
+    "type": "fisico",
+    "specs": {
+      "iluminacion": "NO",
+      "conexion": "USB",
+      "microfono": "Sí"
+    }
+  },
+  {
+    "id": 8,
+    "name": "God Of War Pc",
+    "brand": "Sony",
+    "price": 6199,
+    "images": [
+      "/images/juegopc2.jpg",
+      "/images/juegopc2-a.jpg",
+      "/images/juegopc2-b.jpg",
+      "/images/juegopc2-c.jpg",
+      "/images/juegopc2-d.jpg"
+    ],
+    "description": "La versión para PC destaca por su optimización y calidad visual, convirtiéndolo en una excelente opción para jugar en esta plataforma.",
+    "category": "Juegos PC",
+    "stock": "infinito",
+    "type": "digital",
+    "specs": {
+      "plataforma": "PC",
+      "formato": "Descarga digital"
+    }
+  }
+]

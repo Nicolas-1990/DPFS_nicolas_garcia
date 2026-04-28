@@ -1,0 +1,178 @@
+<%- include("../partials/head", { title: product.name }) %>
+<%- include("../partials/header") %>
+
+<main class="main">
+
+  <div class="product-detail">
+
+    <div class="images">
+
+  <!-- IMAGEN PRINCIPAL -->
+  <div class="image-zoom" id="zoomContainer">
+  <img 
+    src="/images/products/<%= images[0] %>" 
+    class="main-image" 
+    id="mainImage"
+  >
+</div>
+
+<div class="thumbnails">
+  <% images.slice(0, 5).forEach(img => { %>
+    <img 
+      src="/images/products/<%= img %>" 
+      class="thumb"
+    >
+  <% }) %>
+</div>
+
+</div>
+
+  <div class="info">
+      <h1><%= product.name %></h1>
+  <!-- PRECIO -->
+  <div class="price-block">
+      <% if(product.discount && product.discount > 0){ %>
+        <p class="old-price">$ <%= Math.round(product.price / (1 - product.discount / 100)) %></p>
+        <p class="price">$ <%= product.price %></p>
+      <% } else { %>
+        <p class="old-price invisible">$ 0</p>
+        <p class="price">$ <%= product.price %></p>
+        <p class="discount invisible">0% OFF</p>
+      <% } %>
+  </div>
+
+      <!-- DESCUENTO -->
+      <% if(product.discount && product.discount > 0){ %>
+        <p class="discount"><%= product.discount %>% OFF</p>
+      <% } %>
+
+      <!-- STOCK -->
+      <% if(product.type === "digital"){ %>
+        <p class="digital">Descarga inmediata</p>
+      <% } else if(product.stock > 0){ %>
+        <p class="stock available">En stock</p>
+      <% } else { %>
+        <p class="stock unavailable">Sin stock</p>
+      <% } %>
+
+      <p class="<%= product.type === 'digital' ? 'digital' : 'fisico' %>">Producto: <%= product.type === "digital" ? "Digital" : "Físico" %></p>
+      <p>Categoría: <%= product.category ? product.category.name : "Sin categoría" %></p>
+      <p>Marca: <%= product.brand ? product.brand.name : "Sin marca" %></p>
+
+      <% if (product.colors && product.colors.length > 0) { %>
+        <p>Colores: <% product.colors.forEach(color => { %>
+            <span class="color-badge"><%= color.name %></span>
+          <% }) %>
+        </p>
+      <% } %>
+
+      <p><%= product.description %></p>
+
+    <div class="cart-actions">
+
+        <button class="btn add-to-cart" data-id="<%= product.id %>">
+          Agregar al carrito
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="related-products">
+  <h2>Productos relacionados</h2>
+
+  <div class="related-grid">
+    <% if (!relatedProducts || relatedProducts.length === 0) { %>
+      <p>No hay productos relacionados.</p>
+    <% } %>
+
+    <% relatedProducts.forEach(p => { %>
+
+      <div class="product-card">
+        <img src="/images/products/<%= p.images[0] || p.image %>">
+        <h3><%= p.name %></h3>
+        <p>$ <%= p.price %></p>
+        <a href="/products/<%= p.id %>" class="btn btn-primary">Ver detalle</a>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const container = document.getElementById("zoomContainer");
+  const image = document.getElementById("mainImage");
+  const thumbs = document.querySelectorAll(".thumb");
+
+  // 👉 CAMBIO DE IMAGEN
+  thumbs.forEach(img => {
+    img.addEventListener("click", () => {
+
+      // reset zoom
+      image.style.transform = "scale(1)";
+      image.style.transformOrigin = "center";
+
+      // cambio de imagen
+      image.src = img.src;
+
+    // ACTIVAR MINIATURA
+  thumbs.forEach(t => t.classList.remove("active"));
+    img.classList.add("active");
+
+    });
+  });
+
+  // ZOOM
+  container.addEventListener("mousemove", (e) => {
+    const rect = container.getBoundingClientRect();
+
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+    image.style.transformOrigin = `${x}% ${y}%`;
+    image.style.transform = "scale(2)";
+  });
+
+  container.addEventListener("mouseleave", () => {
+    image.style.transform = "scale(1)";
+    image.style.transformOrigin = "center";
+  });
+
+});
+</script>
+
+<script>
+document.querySelectorAll(".add-to-cart").forEach(btn => {
+  btn.addEventListener("click", async () => {
+    const id = btn.dataset.id;
+
+    const res = await fetch(`/cart/add/${id}`, {
+      method: "POST"
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+
+      const total = data.cart.reduce((acc, item) => acc + item.quantity, 0);
+
+      const cartCount = document.getElementById("cart-count");
+      if (cartCount) {
+        cartCount.textContent = total;
+
+        cartCount.classList.add("bump");
+        setTimeout(() => cartCount.classList.remove("bump"), 200);
+      }
+
+      showToast("✔ Producto agregado");
+
+    } else {
+      showToast(data.message, "error");
+    }
+  });
+});
+</script>
+
+</main>
+
+<%- include("../partials/footer") %>

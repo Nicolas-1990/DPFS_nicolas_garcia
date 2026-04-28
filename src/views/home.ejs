@@ -1,0 +1,121 @@
+<%- include("./partials/head", { title: "Inicio" }) %>
+<%- include("./partials/header") %>
+
+<main class="main">
+
+  <!-- HERO -->
+    <section class="hero">
+      <h1>Accesorios y periféricos gamer</h1>
+      <h3>Juegos digitales para PC y consolas</h3>
+      <a href="/products" class="btn btn-primary">Explorar productos</a>
+    </section>
+
+   <!-- CATEGORÍAS -->
+   <section class="categorias">
+    <a href="/products?category=1" class="tab">Teclados</a>
+    <a href="/products?category=2" class="tab">Mouse</a>
+    <a href="/products?category=3" class="tab">Headsets</a>
+    <a href="/products?category=4" class="tab">Juegos PC</a>
+  </section>
+
+<!-- DESTACADOS -->
+  <h2>Productos Destacados</h2>
+
+<div class="products-container">
+
+  <% destacados.forEach(product => { %>
+
+    <div class="product-card">
+
+  <!-- BADGE -->
+  <% if(product.type === "digital"){ %>
+    <span class="badge digital">DIGITAL</span>
+  <% } else { %>
+    <span class="badge fisico">FÍSICO</span>
+  <% } %>
+
+  <!-- IMAGEN -->
+  <img src="/images/products/<%= product.images[0] %>">
+
+  <!-- NOMBRE -->
+  <h3><%= product.name %></h3>
+
+  <!-- PRECIO -->
+  <div class="price-block">
+    <% if(product.discount && product.discount > 0){ %>
+
+      <p class="old-price">
+        $ <%= Math.round(product.price / (1 - product.discount / 100)) %>
+      </p>
+
+      <p class="price">$ <%= product.price %></p>
+
+      <p class="discount"><%= product.discount %>% OFF</p>
+
+    <% } else { %>
+
+      <p class="old-price invisible">$ 0</p>
+      <p class="price">$ <%= product.price %></p>
+      <p class="discount invisible">0% OFF</p>
+
+    <% } %>
+
+  </div>
+
+  <!-- STOCK -->
+  <% if(product.type === "digital"){ %>
+    <p class="digital">Descarga inmediata</p>
+  <% } else if(product.stock > 0){ %>
+    <p class="stock available">En stock</p>
+  <% } else { %>
+    <p class="stock unavailable">Sin stock</p>
+  <% } %>
+
+    <!-- BOTONES -->
+    <a href="/products/<%= product.id %>" class="btn btn-primary">Ver detalle</a>
+
+    <!-- <button class="add-to-cart" data-id="<%= product.id %>">Agregar al carrito</button> -->
+
+    </div>
+
+  <% }) %>
+
+</div>
+
+<script>
+document.querySelectorAll(".add-to-cart").forEach(btn => {
+  btn.addEventListener("click", async () => {
+    const id = btn.dataset.id;
+
+    const res = await fetch(`/cart/add/${id}`, {
+      method: "POST"
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+
+      const total = data.cart.reduce((acc, item) => acc + item.quantity, 0);
+
+      const cartCount = document.getElementById("cart-count");
+      if (cartCount) {
+        cartCount.textContent = total;
+
+        // 🔥 animación
+        cartCount.classList.add("bump");
+        setTimeout(() => cartCount.classList.remove("bump"), 200);
+      }
+
+      // 🔥 toast éxito
+      showToast("✔ Producto agregado");
+
+    } else {
+      showToast(data.message, "error");
+    }
+  });
+});
+</script>
+
+</main>
+
+<%- include("./partials/footer") %>

@@ -1,0 +1,37 @@
+<%- include("../partials/head", { title: "Login" }) %>
+<%- include("../partials/header") %>
+
+<main class="auth-container">
+  <section class="form-container">
+    <h2>Iniciar sesión</h2>
+
+    <form class="form" action="/users/login" method="POST">
+
+      <label>Email</label>
+      <input type="email" name="email" required placeholder="Ingresa tu email">
+      <% if (errors && errors.email) { %>
+        <p class="error-message"><%= errors.email.msg %></p>
+      <% } %>
+
+      <label>Contraseña</label>
+      <input type="password" name="password" required placeholder="Ingresa tu contraseña">
+      <% if (errors && errors.password) { %>
+        <p class="error-message"><%= errors.password.msg %></p>
+      <% } %>
+
+      <div class="remember">
+        <input type="checkbox" name="remember" id="remember">
+        <label for="remember">Recordarme</label>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Ingresar</button>
+
+      <p class="redirect">
+        ¿No tienes cuenta? <a href="/users/register">Regístrate</a>
+      </p>
+
+    </form>
+  </section>
+</main>
+
+<%- include("../partials/footer") %>

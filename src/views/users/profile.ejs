@@ -1,0 +1,33 @@
+<%- include("../partials/head", { title: "Perfil" }) %>
+<%- include("../partials/header") %>
+
+<main class="main">
+
+<section class="profile-container">
+
+    <div class="profile-card">
+
+        <img src="/images/users/<%= user.avatar || 'default.png' %>" onerror="this.src='/images/users/default.png'" class="profile-avatar">
+
+        <h2><%= user.name %> <%= user.apellido %></h2>
+
+        <p class="profile-email">
+            <%= user.email %>
+        </p>
+
+        <p class="profile-role">
+            Rol: <strong><%= user.role %></strong>
+        </p>
+
+        <div class="profile-buttons">
+            <a href="/" class="btn btn-primary">Volver al inicio</a>
+            <a href="/users/logout" class="btn btn-primary">Cerrar sesión</a>
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<%- include("../partials/footer") %>

@@ -1,0 +1,95 @@
+<%- include("../partials/head", { title: "Crear Producto" }) %>
+<%- include("../partials/header") %>
+
+<main class="main">
+  <section class="form-container">
+
+    <h2>Crear Producto</h2>
+
+    <form action="/products" method="POST" class="form-group">
+
+      <!-- NOMBRE -->
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" name="name" value="<%= oldData?.name || '' %>">
+        <% if (errors && errors.name) { %>
+          <p class="error"><%= errors.name.msg %></p>
+        <% } %>
+      </div>
+
+      <!-- DESCRIPCIÓN -->
+      <div class="form-group">
+        <label>Descripción</label>
+        <textarea name="description"><%= oldData?.description || '' %></textarea>
+        <% if (errors && errors.description) { %>
+          <p class="error"><%= errors.description.msg %></p>
+        <% } %>
+      </div>
+
+      <!-- PRECIO -->
+      <div class="form-group">
+        <label>Precio</label>
+        <input type="number" name="price" value="<%= oldData?.price || '' %>">
+        <% if (errors && errors.price) { %>
+          <p class="error"><%= errors.price.msg %></p>
+        <% } %>
+      </div>
+
+      <!-- IMÁGENES -->
+      <div class="form-group">
+        <label>Imágenes (separadas por coma)</label>
+        <input type="text" name="images" placeholder="img1.jpg, img2.jpg"
+          value="<%= oldData?.images || '' %>">
+      </div>
+
+      <!-- TIPO -->
+      <div class="form-group">
+        <label>Tipo</label>
+        <select name="type">
+          <option value="fisico">Físico</option>
+          <option value="digital">Digital</option>
+        </select>
+      </div>
+
+      <!-- STOCK -->
+      <div class="form-group">
+        <label>Stock</label>
+        <input type="number" name="stock" value="<%= oldData?.stock || '' %>">
+      </div>
+
+      <!-- DESCUENTO -->
+      <div class="form-group">
+        <label>Descuento (%)</label>
+        <input type="number" name="discount" value="<%= oldData?.discount || 0 %>">
+      </div>
+
+      <!-- CATEGORÍA -->
+      <div class="form-group">
+        <label>Categoría (ID)</label>
+        <input type="number" name="category_id" value="<%= oldData?.category_id || '' %>">
+      </div>
+
+      <!-- MARCA -->
+      <div class="form-group">
+        <label>Marca (ID)</label>
+        <input type="number" name="brand_id" value="<%= oldData?.brand_id || '' %>">
+      </div>
+
+      <!-- COLORES -->
+      <div class="form-group">
+        <label>Colores (separados por coma)</label>
+        <input type="text" name="colors" placeholder="Negro, Blanco"
+          value="<%= oldData?.colors || '' %>">
+      </div>
+
+      <!-- BOTÓN -->
+      <button type="submit" class="btn btn-primary">
+        Crear Producto
+      </button>
+
+    </form>
+
+  </section>
+</main>
+
+<%- include("../partials/footer") %>

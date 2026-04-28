@@ -1,0 +1,31 @@
+<header class="header">
+  <h1 class="logo">NextLevel PC</h1>
+
+  <nav class="nav">
+
+    <a href="/">Home</a>
+    <a href="/products">Productos</a>
+
+    <a href="/cart">🛒 Carrito (<span id="cart-count"><%= totalItems %></span>)</a>
+
+    <% if (user) { %>
+      <div class="user-info">
+        <img src="/images/users/<%= user.avatar || 'default.png' %>" class="avatar">
+        <span>Hola <%= user.first_name || 'Usuario' %></span>
+        <a href="/users/profile">Perfil</a>
+        <a href="/users/logout">Logout</a>
+      </div>
+    <% } else { %>
+      <a href="/users/login">Login</a>
+      <a href="/users/register">Registro</a>
+    <% } %>
+
+  </nav>
+
+  <div class="menu-icon" id="menu-icon">
+    ☰
+  </div>
+
+</header>
+
+<div class="overlay" id="overlay"></div>
