@@ -61,7 +61,7 @@ const productsAPI = {
       });
 
     } catch (error) {
-      console.log("ERROR DETAIL:", error);
+      console.error("❌ ERROR DETAIL:", error);
       return res.status(500).json({ error: 'Error al obtener producto' });
     }
   }

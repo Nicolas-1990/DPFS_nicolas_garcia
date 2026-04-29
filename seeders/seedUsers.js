@@ -6,8 +6,6 @@ async function seedUsers() {
     console.log("Seeding users...");
 
     const hash = await bcrypt.hash("123456", 10);
-    // const adminHash = await bcrypt.hash("admin123", 10);
-    // const userHash = await bcrypt.hash("user123", 10);
 
     await db.User.destroy({ where: {}, truncate: true });
 

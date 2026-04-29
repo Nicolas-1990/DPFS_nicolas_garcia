@@ -62,7 +62,6 @@
 
   </div>
 
-  <!-- STOCK -->
   <% if(product.type === "digital"){ %>
     <p class="digital">Descarga inmediata</p>
   <% } else if(product.stock > 0){ %>
@@ -71,10 +70,7 @@
     <p class="stock unavailable">Sin stock</p>
   <% } %>
 
-    <!-- BOTONES -->
     <a href="/products/<%= product.id %>" class="btn btn-primary">Ver detalle</a>
-
-    <!-- <button class="add-to-cart" data-id="<%= product.id %>">Agregar al carrito</button> -->
 
     </div>
 
@@ -101,13 +97,9 @@ document.querySelectorAll(".add-to-cart").forEach(btn => {
       if (cartCount) {
         cartCount.textContent = total;
 
-        // 🔥 animación
         cartCount.classList.add("bump");
         setTimeout(() => cartCount.classList.remove("bump"), 200);
       }
-
-      // 🔥 toast éxito
-      showToast("✔ Producto agregado");
 
     } else {
       showToast(data.message, "error");

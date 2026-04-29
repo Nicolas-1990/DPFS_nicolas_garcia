@@ -18,35 +18,28 @@
   <label>Precio</label>
   <input type="number" name="price" value="<%= oldData?.price || product.price %>">
 
-  <!-- 🖼️ IMÁGENES -->
   <label>Imágenes (separadas por coma)</label>
   <input type="text" name="images"
     value="<%= oldData?.images || (product.images ? JSON.parse(product.images).join(', ') : '') %>">
 
-  <!-- 🏷️ TYPE -->
   <label>Tipo</label>
   <select name="type">
     <option value="fisico" <%= product.type === "fisico" ? "selected" : "" %>>Físico</option>
     <option value="digital" <%= product.type === "digital" ? "selected" : "" %>>Digital</option>
   </select>
 
-  <!-- 📦 STOCK -->
   <label>Stock</label>
   <input type="number" name="stock" value="<%= oldData?.stock || product.stock %>">
 
-  <!-- 💸 DESCUENTO -->
   <label>Descuento (%)</label>
   <input type="number" name="discount" value="<%= oldData?.discount || product.discount %>">
 
-  <!-- 🗂️ CATEGORÍA -->
   <label>Categoría</label>
   <input type="number" name="category_id" value="<%= oldData?.category_id || product.category_id %>">
 
-  <!-- 🏢 MARCA -->
   <label>Marca</label>
   <input type="number" name="brand_id" value="<%= oldData?.brand_id || product.brand_id %>">
 
-  <!-- 🎨 COLORES -->
   <label>Colores (separados por coma)</label>
   <input type="text" name="colors"
     value="<%= product.colors && product.colors.length > 0 ? product.colors.map(c => c.name).join(', ') : '' %>">

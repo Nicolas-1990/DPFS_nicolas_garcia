@@ -165,7 +165,7 @@ detail: async (req, res) => {
 
   } catch (error) {
     console.error("❌ ERROR EN DETALLE:", error);
-    res.send("Error en detalle");
+    return res.status(500).send("Error interno");
   }
 },
 
@@ -188,12 +188,10 @@ store: async (req, res) => {
 
   try {
 
-    // 🖼️ IMÁGENES (array)
     const imagesArray = req.body.images
       ? req.body.images.split(",").map(i => i.trim())
       : [];
 
-    // 🎨 COLORES (array)
     let colorsArray = [];
 
     if (req.body.colors) {
@@ -202,7 +200,6 @@ store: async (req, res) => {
         : req.body.colors.split(",").map(c => c.trim().toLowerCase());
     }
 
-    // 🔍 BUSCAR / CREAR COLORES
     const colorsDB = [];
 
     for (let colorName of colorsArray) {
@@ -217,7 +214,6 @@ store: async (req, res) => {
       colorsDB.push(color);
     }
 
-    // 🧱 CREAR PRODUCTO
     const product = await db.Product.create({
       name: req.body.name,
       description: req.body.description,
@@ -231,7 +227,6 @@ store: async (req, res) => {
       brand_id: Number(req.body.brand_id) || null
     });
 
-    // 🔗 RELACIÓN COLORES
     if (colorsDB.length > 0) {
       await product.setColors(colorsDB);
     }
@@ -240,7 +235,7 @@ store: async (req, res) => {
 
   } catch (error) {
     console.error("❌ ERROR STORE:", error);
-    return res.send("Error al crear producto");
+    return res.status(500).send("Error interno");
   }
 },
 
@@ -282,12 +277,10 @@ update: async (req, res) => {
       return res.send("Producto no encontrado");
     }
 
-    // 🖼️ IMÁGENES
     const imagesArray = req.body.images
       ? req.body.images.split(",").map(i => i.trim())
       : [];
 
-    // 🎨 COLORES
     let colorsArray = [];
 
     if (req.body.colors) {
@@ -310,7 +303,6 @@ update: async (req, res) => {
       colorsDB.push(color);
     }
 
-    // 🧱 UPDATE PRODUCTO
     await product.update({
       name: req.body.name,
       description: req.body.description,
@@ -324,7 +316,6 @@ update: async (req, res) => {
       brand_id: Number(req.body.brand_id) || null
     });
 
-    // 🔗 ACTUALIZAR COLORES (CLAVE)
     if (colorsDB.length > 0) {
       await product.setColors(colorsDB);
     } else {
@@ -335,7 +326,7 @@ update: async (req, res) => {
 
   } catch (error) {
     console.error("❌ ERROR UPDATE:", error);
-    return res.send("Error al actualizar");
+    return res.status(500).send("Error interno");
   }
 },
 

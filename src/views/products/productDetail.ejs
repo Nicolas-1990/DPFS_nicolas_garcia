@@ -7,7 +7,6 @@
 
     <div class="images">
 
-  <!-- IMAGEN PRINCIPAL -->
   <div class="image-zoom" id="zoomContainer">
   <img 
     src="/images/products/<%= images[0] %>" 
@@ -29,7 +28,6 @@
 
   <div class="info">
       <h1><%= product.name %></h1>
-  <!-- PRECIO -->
   <div class="price-block">
       <% if(product.discount && product.discount > 0){ %>
         <p class="old-price">$ <%= Math.round(product.price / (1 - product.discount / 100)) %></p>
@@ -41,12 +39,10 @@
       <% } %>
   </div>
 
-      <!-- DESCUENTO -->
       <% if(product.discount && product.discount > 0){ %>
         <p class="discount"><%= product.discount %>% OFF</p>
       <% } %>
 
-      <!-- STOCK -->
       <% if(product.type === "digital"){ %>
         <p class="digital">Descarga inmediata</p>
       <% } else if(product.stock > 0){ %>
@@ -104,25 +100,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const image = document.getElementById("mainImage");
   const thumbs = document.querySelectorAll(".thumb");
 
-  // 👉 CAMBIO DE IMAGEN
   thumbs.forEach(img => {
     img.addEventListener("click", () => {
 
-      // reset zoom
       image.style.transform = "scale(1)";
       image.style.transformOrigin = "center";
 
-      // cambio de imagen
       image.src = img.src;
 
-    // ACTIVAR MINIATURA
   thumbs.forEach(t => t.classList.remove("active"));
     img.classList.add("active");
 
     });
   });
 
-  // ZOOM
   container.addEventListener("mousemove", (e) => {
     const rect = container.getBoundingClientRect();
 

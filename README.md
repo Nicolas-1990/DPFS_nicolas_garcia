@@ -58,6 +58,13 @@ npm start
 ├── app.js           # Entry point
 └── package.json
 
+# Referentes
+Razer → Diseño minimalista oscuro y enfoque en producto.
+Logitech → Presentación técnica clara.
+Corsair → Estética moderna y branding fuerte.
+Amazon → Flujo de carrito y experiencia de compra.
+Mercado Libre → Adaptación al mercado latino y usabilidad.
+
 ## 👨‍💻 Autor
 Nicolas Garcia
 🔗 GitHub: https://github.com/Nicolas-1990  

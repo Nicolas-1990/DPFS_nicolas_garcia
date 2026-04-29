@@ -5,7 +5,7 @@
   <section class="form-container">
     <h2>Crear cuenta</h2>
 
-    <form class="form-group" action="/users/register" method="POST" enctype="multipart/form-data">
+    <form class="form" action="/users/register" method="POST" enctype="multipart/form-data">
 
       <label for="name">Nombre</label>
       <input type="text" name="name" id="name" value="<%= oldData?.name || '' %>" required placeholder="Ingresa tu nombre">

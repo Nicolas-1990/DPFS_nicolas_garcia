@@ -7,7 +7,6 @@
 
   <div class="cart-container">
 
-    <!-- TABLA -->
     <div class="cart-table">
 
       <div class="cart-header">
@@ -21,10 +20,8 @@
       <% cart.forEach(item => { %>
         <div class="cart-row">
 
-  <!-- IMAGEN -->
   <img src="/images/products/<%= item.image %>" class="cart-img">
 
-  <!-- PRODUCTO -->
   <span>
   <%= item.name %><br>
 
@@ -33,10 +30,8 @@
   </small>
 </span>
 
-  <!-- PRECIO UNITARIO -->
   <span>$ <%= item.price %></span>
 
-  <!-- CANTIDAD + ELIMINAR -->
   <div class="quantity">
 
   <% if (item.type !== "digital") { %>
@@ -58,14 +53,12 @@
 
   <% } %>
 
-  <!-- eliminar siempre visible -->
   <form action="/cart/delete/<%= item.id %>" method="POST">
     <button type="submit" class="btn-delete">Eliminar</button>
   </form>
 
 </div>
 
-  <!-- ✅ SUBTOTAL -->
   <span>
     $ <%= item.price * item.quantity %>
   </span>
@@ -76,7 +69,6 @@
 
 </div>
 
-    <!-- SUMMARY (AFUERA DE TABLE) -->
     <div class="cart-summary">
 
       <div class="summary-row">
@@ -133,7 +125,6 @@
   <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  // BOTONES + y -
   document.querySelectorAll(".quantity button:not(.btn-delete)").forEach(btn => {
 
     btn.addEventListener("click", async (e) => {

@@ -17,7 +17,7 @@ module.exports = [
         throw new Error("Email no registrado");
       }
 
-      req.user = user; // lo guardamos para usarlo después
+      req.user = user;
       return true;
     }),
 
