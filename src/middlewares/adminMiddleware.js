@@ -1,6 +1,6 @@
 function adminMiddleware(req,res,next){
 
-    if(req.session.user && req.session.user.role === "admin"){
+    if(req.session.userLogged && req.session.userLogged.role === "admin"){
         return next();
     }
 

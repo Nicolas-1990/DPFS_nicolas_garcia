@@ -184,7 +184,7 @@ view: function(req, res) {
 
   const cart = req.session.cart || [];
 
-  if (!req.session.user) {
+  if (!req.session.userLogged) {
   return res.json({
     success: false,
     message: "Debes iniciar sesión para comprar"

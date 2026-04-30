@@ -106,7 +106,7 @@
 <% if (cart.length === 0) { %>
   <p class="empty-cart-msg">Tu carrito está vacío</p>
 <% } else { %>
-  <% if (user) { %>
+  <% if (userLogged) { %>
   <form action="/cart/clear" method="POST">
     <button type="submit" class="btn btn-primary checkout-btn">
       Finalizar compra

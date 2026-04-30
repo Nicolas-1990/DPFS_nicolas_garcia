@@ -240,6 +240,7 @@ store: async (req, res) => {
 },
 
 editForm: async (req, res) => {
+  console.log("SESSION USER:", req.session.userLogged);
 
   const product = await db.Product.findByPk(req.params.id, {
   include: [

@@ -4,6 +4,7 @@ const path = require("path");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const rememberMiddleware = require("./src/middlewares/rememberMiddleware");
+const userLoggedMiddleware = require("./src/middlewares/userLoggedMiddleware");
 
 const usersAPIRoutes = require('./src/routes/api/users');
 const productsAPIRoutes = require('./src/routes/api/products');
@@ -23,18 +24,18 @@ app.use(session({
     saveUninitialized: false
 }));
 
+app.use(rememberMiddleware);
+app.use(userLoggedMiddleware);
+
 app.use('/api/users', usersAPIRoutes);
 app.use('/api/products', productsAPIRoutes);
-
-app.use(rememberMiddleware);
-
 app.set("views", path.join(__dirname, "src/views"));
 app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 
 app.use((req, res, next) => {
-  res.locals.user = req.session.user || null;
+  res.locals.userLogged = req.session.userLogged || null;
   res.locals.error = null;
 
   const cart = req.session.cart || [];

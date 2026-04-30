@@ -8,10 +8,10 @@
 
     <a href="/cart">🛒 Carrito (<span id="cart-count"><%= totalItems %></span>)</a>
 
-    <% if (user) { %>
+    <% if (userLogged) { %>
       <div class="user-info">
-        <img src="/images/users/<%= user.avatar || 'default.png' %>" class="avatar">
-        <span>Hola <%= user.first_name || 'Usuario' %></span>
+        <img src="/images/users/<%= userLogged.avatar || 'default.png' %>" class="avatar">
+        <span>Hola <%= userLogged.first_name || 'Usuario' %></span>
         <a href="/users/profile">Perfil</a>
         <a href="/users/logout">Logout</a>
       </div>

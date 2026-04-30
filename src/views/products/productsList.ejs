@@ -81,7 +81,7 @@
     Agregar al carrito
   </button>
 
-  <% if (user && user.role === "admin") { %>
+  <% if (userLogged && userLogged.role === "admin") { %>
     <div class="admin-actions">
 
       <form action="/products/<%= product.id %>/edit" method="GET">
@@ -136,7 +136,7 @@ document.querySelectorAll(".add-to-cart").forEach(btn => {
 
 </main>
 <div class="create-product">
-  <% if (user && user.role === "admin") { %>
+  <% if (userLogged && userLogged.role === "admin") { %>
   <div class="create-product">
     <a href="/products/create" class="btn btn-primary">Crear Nuevo Producto</a>
   </div>

@@ -10,6 +10,60 @@ const usersController = {
     });
     
     },
+    
+    processLogin: async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.render("users/login", {
+            errors: errors.mapped(),
+            oldData: req.body
+        });
+    }
+
+    try {
+        const userToLogin = await db.User.findOne({
+            where: { email: req.body.email }
+        });
+
+        if (!userToLogin) {
+            return res.render("users/login", {
+                errors: {
+                    email: { msg: "Email no registrado" }
+                },
+                oldData: req.body
+            });
+        }
+
+        const isOk = bcrypt.compareSync(
+            req.body.password,
+            userToLogin.password
+        );
+
+        if (!isOk) {
+            return res.render("users/login", {
+                errors: {
+                    password: { msg: "Contraseña incorrecta" }
+                },
+                oldData: req.body
+            });
+        }
+
+        req.session.userLogged = userToLogin;
+
+        if (req.body.remember) {
+            res.cookie("userEmail", userToLogin.email, {
+                maxAge: 1000 * 60 * 60 * 24
+            });
+        }
+
+        return res.redirect("/products");
+
+    } catch (error) {
+        console.error("❌ ERROR LOGIN:", error);
+        return res.status(500).send("Error interno");
+    }
+},
 
 register: (req, res) => {
   res.render("users/register", {
@@ -58,57 +112,6 @@ register: (req, res) => {
     return res.status(500).send("Error interno");
   }
 },
-    
-    processLogin: async (req, res) => {
-
-        const errors = validationResult(req);
-
-        if (!errors.isEmpty()) {
-            return res.render("users/login", {
-                errors: errors.mapped(),
-                oldData: req.body
-            });
-        }
-
-        try {
-
-            const userToLogin = await db.User.findOne({
-                where: { email: req.body.email }
-            });
-
-            if (!userToLogin) {
-                return res.render("users/login", {
-                    errors: {
-                        email: { msg: "Email no registrado" }
-                    },
-                    oldData: req.body
-                });
-            }
-
-            const isOk = bcrypt.compareSync(req.body.password, userToLogin.password);
-
-            if (!isOk) {
-                return res.render("users/login", {
-                    errors: {
-                        password: { msg: "Contraseña incorrecta" }
-                    },
-                    oldData: req.body
-                });
-            }
-
-            req.session.user = userToLogin;
-
-            if (req.body.remember) {
-                res.cookie("userEmail", userToLogin.email, { maxAge: 1000 * 60 * 60 * 24 });
-            }
-
-            return res.redirect("/products");
-
-        } catch (error) {
-            console.error("❌ ERROR LOGIN:", error);
-            return res.status(500).send("Error interno");
-        }
-    },
 
     profile: (req,res)=>{
         res.render("users/profile");
@@ -118,13 +121,7 @@ register: (req, res) => {
         res.clearCookie("userEmail");
         req.session.destroy();
         return res.redirect("/");
-    },
-
-
-logout: function(req, res) {
-    req.session.destroy();
-    res.redirect("/");
-  }
+    }
 
 };
 

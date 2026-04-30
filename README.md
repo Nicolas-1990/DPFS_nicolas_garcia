@@ -1,6 +1,6 @@
 🛒 NextLevel PC - Full Stack Project
 
-Ecommerce de productos tecnológicos (hardware y videojuegos), con sistema de usuarios, carrito de compras y panel administrativo.
+E-commerce de productos tecnológicos (hardware y videojuegos), con sistema de usuarios, carrito de compras y panel administrativo.
 
 🚀 Tecnologías
 - Node.js
@@ -8,6 +8,17 @@ Ecommerce de productos tecnológicos (hardware y videojuegos), con sistema de us
 - MySQL
 - Sequelize
 - React (dashboard administrativo)
+
+🛠 Instalación
+
+# Backend
+npm install
+nodemon app.js
+
+# Frontend (React Dashboard)
+cd dashboard
+npm install
+npm start
 
 📦 Funcionalidades
 - Registro y login de usuarios
@@ -27,23 +38,6 @@ Panel administrativo con:
 - Admin: gestión de productos y acceso al dashboard
 - Usuario: navegación, carrito y compra
 
-📸 Capturas
-- Home
-- Listado de productos
-- Carrito
-- Dashboard
-
-🛠 Instalación
-
-# Backend
-npm install
-nodemon app.js
-
-# Frontend (React Dashboard)
-cd dashboard
-npm install
-npm start
-
 🔗 Endpoints
 - http://localhost:3002/api/products
 - http://localhost:3002/api/users
@@ -58,12 +52,48 @@ npm start
 ├── app.js           # Entry point
 └── package.json
 
-# Referentes
-Razer → Diseño minimalista oscuro y enfoque en producto.
-Logitech → Presentación técnica clara.
-Corsair → Estética moderna y branding fuerte.
-Amazon → Flujo de carrito y experiencia de compra.
-Mercado Libre → Adaptación al mercado latino y usabilidad.
+📸 Capturas del proyecto
+- Home
+![Home](public/screenshots/home.png)
+
+- Listado de productos
+![Listado de productos 1](public/screenshots/list1.png)
+![Listado de productos 2](public/screenshots/list2.png)
+
+- Detalle de producto
+![Detalle de producto](public/screenshots/detail.png)
+
+- Carrito
+![Carrito 1](public/screenshots/cart1.png)
+![Carrito 2](public/screenshots/cart2.png)
+
+- Inicio de sesión
+![Login](public/screenshots/login.png)
+
+- Registro
+![Registro 1](public/screenshots/register1.png)
+![Registro 2](public/screenshots/register2.png)
+
+- Dashboard
+![Dashboard 1](public/screenshots/dashboard1.png)
+![Dashboard 2](public/screenshots/dashboard2.png)
+
+## Base de datos
+
+1. Abrir phpMyAdmin
+2. Crear base de datos: gaming_store
+3. Importar archivo:
+   /db/gaming_store.sql
+
+## 📚 Referencias
+
+Documentación oficial utilizada durante el desarrollo:
+
+- Express.js Documentation: https://expressjs.com/
+- Node.js Documentation: https://nodejs.org/
+- MySQL 8.0 Reference Manual: https://dev.mysql.com/doc/
+- React Documentation: https://react.dev/
+- Sequelize ORM Documentation: https://sequelize.org/
 
 ## 👨‍💻 Autor
 Nicolas Garcia

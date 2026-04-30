@@ -7,16 +7,16 @@
 
     <div class="profile-card">
 
-        <img src="/images/users/<%= user.avatar || 'default.png' %>" onerror="this.src='/images/users/default.png'" class="profile-avatar">
+        <img src="/images/users/<%= userLogged.avatar || 'default.png' %>" onerror="this.src='/images/users/default.png'" class="profile-avatar">
 
-        <h2><%= user.name %> <%= user.apellido %></h2>
+        <h2><%= userLogged.name %> <%= userLogged.apellido %></h2>
 
         <p class="profile-email">
-            <%= user.email %>
+            <%= userLogged.email %>
         </p>
 
         <p class="profile-role">
-            Rol: <strong><%= user.role %></strong>
+            Rol: <strong><%= userLogged.role %></strong>
         </p>
 
         <div class="profile-buttons">
