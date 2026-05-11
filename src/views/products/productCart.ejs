@@ -104,105 +104,33 @@
 </div>
 
 <% if (cart.length === 0) { %>
-  <p class="empty-cart-msg">Tu carrito está vacío</p>
+
+  <p class="empty-cart-msg">
+    Tu carrito está vacío
+  </p>
+
 <% } else { %>
+
   <% if (userLogged) { %>
-  <form action="/cart/clear" method="POST">
-    <button type="submit" class="btn btn-primary checkout-btn">
+
+    <a href="/cart/checkout"
+       class="btn btn-primary checkout-btn">
       Finalizar compra
-    </button>
-  </form>
-<% } else { %>
-  <a href="/users/login" class="btn btn-primary checkout-btn">
-    Iniciar sesión para comprar
-  </a>
-<% } %>
+    </a>
+
+  <% } else { %>
+
+    <a href="/users/login?redirect=/cart"
+       class="btn btn-primary checkout-btn">
+      Iniciar sesión para comprar
+    </a>
+
+  <% } %>
+
 <% } %>
     </div>
 
   </div>
-
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-
-  document.querySelectorAll(".quantity button:not(.btn-delete)").forEach(btn => {
-
-    btn.addEventListener("click", async (e) => {
-      e.preventDefault();
-
-      const form = btn.closest("form");
-      const row = btn.closest(".cart-row");
-      const qty = row.querySelector(".quantity span");
-      const subtotal = row.querySelector("span:last-child");
-
-      qty.classList.add("bump");
-      subtotal.classList.add("bump");
-
-      setTimeout(() => {
-        qty.classList.remove("bump");
-        subtotal.classList.remove("bump");
-      }, 200);
-
-      const res = await fetch(form.action, { method: "POST" });
-      const data = await res.json();
-
-      if (data.success) { 
-        showToast(data.message, "success");
-      } else {
-        showToast(data.message, "error");
-      }
-
-      setTimeout(() => location.reload(), 2000);
-      });
-  });
-
-  document.querySelectorAll("form[action*='/cart/delete']").forEach(form => {
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const confirmDelete = confirm("¿Eliminar este producto del carrito?");
-    if (!confirmDelete) return;
-
-    const res = await fetch(form.action, { method: "POST" });
-    const data = await res.json();
-
-    if (data.success) {
-
-      const row = form.closest(".cart-row");
-
-      row.style.transition = "all 0.3s ease";
-      row.style.opacity = "0";
-      row.style.transform = "translateX(-20px)";
-
-      showToast(data.message, "error");
-
-      setTimeout(() => {
-        location.reload();
-      }, 800);
-
-    } else {
-      showToast(data.message, "error");
-    }
-  });
-});
-
-  const clearForm = document.querySelector("form[action='/cart/clear']");
-  if (clearForm) {
-    clearForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const res = await fetch("/cart/clear", { method: "POST" });
-      const data = await res.json();
-
-      if (data.success) {
-        showToast("Compra realizada con éxito 🎉");
-        setTimeout(() => location.reload(), 2500);
-      }
-    });
-  }
-
-});
-</script>
 
 </main>
 

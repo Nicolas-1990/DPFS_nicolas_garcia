@@ -2,8 +2,10 @@
   "name": "dpfs_nicolas_garcia",
   "version": "1.0.0",
   "description": "NextLevel PC Store es un ecommerce especializado en productos y videojuegos para PC Gaming.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

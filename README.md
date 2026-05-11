@@ -1,6 +1,6 @@
 🛒 NextLevel PC - Full Stack Project
 
-E-commerce de productos tecnológicos (hardware y videojuegos), con sistema de usuarios, carrito de compras y panel administrativo.
+Aplicación full stack de e-commerce orientada a hardware y videojuegos, con autenticación de usuarios, carrito dinámico, panel administrativo y API REST.
 
 🚀 Tecnologías
 - Node.js
@@ -12,10 +12,12 @@ E-commerce de productos tecnológicos (hardware y videojuegos), con sistema de u
 🛠 Instalación
 
 # Backend
+
 npm install
 nodemon app.js
 
 # Frontend (React Dashboard)
+
 cd dashboard
 npm install
 npm start
@@ -23,6 +25,12 @@ npm start
 📦 Funcionalidades
 - Registro y login de usuarios
 - CRUD de productos
+- Carrito dinámico sin recarga de página
+- Sistema de checkout
+- Productos físicos y digitales
+- Control de stock en tiempo real
+- Galería de imágenes interactiva
+- Roles y permisos
 - API REST (/api/products - /api/users)
 - Dashboard en React consumiendo la API
 
@@ -34,6 +42,17 @@ Panel administrativo con:
 - Último producto
 - Listado de productos
 
+## Variables de entorno
+
+Crear un archivo `.env` con:
+
+```env
+DB_NAME=
+DB_USER=
+DB_PASSWORD=
+SESSION_SECRET=
+```
+
 🔐 Roles de usuario
 - Admin: gestión de productos y acceso al dashboard
 - Usuario: navegación, carrito y compra
@@ -42,15 +61,19 @@ Panel administrativo con:
 - http://localhost:3002/api/products
 - http://localhost:3002/api/users
 
-🗂️ Estructura del proyecto
+## 🗂️ Estructura del proyecto
+
+```txt
 ├── controllers/     # Lógica de cada ruta
-├── middlewares/     # Autenticación, validaciones
+├── middlewares/     # Autenticación y validaciones
 ├── routes/          # Definición de rutas Express
 ├── views/           # Plantillas EJS
-├── public/          # Archivos estáticos (CSS, imágenes)
-├── database/        # Modelos Sequelize y configuración DB
+├── public/          # CSS, JS e imágenes
+├── database/        # Modelos Sequelize y configuración
+├── helpers/         # Funciones reutilizables del carrito
 ├── app.js           # Entry point
 └── package.json
+```
 
 📸 Capturas del proyecto
 - Home
@@ -89,13 +112,20 @@ Panel administrativo con:
 
 Documentación oficial utilizada durante el desarrollo:
 
-- Express.js Documentation: https://expressjs.com/
-- Node.js Documentation: https://nodejs.org/
-- MySQL 8.0 Reference Manual: https://dev.mysql.com/doc/
-- React Documentation: https://react.dev/
-- Sequelize ORM Documentation: https://sequelize.org/
+- [Express.js](https://expressjs.com/)
+- [Node.js](https://nodejs.org/)
+- [MySQL 8.0](https://dev.mysql.com/doc/)
+- [React](https://react.dev/)
+- [Sequelize ORM](https://sequelize.org/)
+
+## 🚀 Próximas mejoras
+
+- Deploy público del proyecto
+- Base de datos remota
+- Persistencia de imágenes en la nube
+- Mejoras de UX y rendimiento
 
 ## 👨‍💻 Autor
 Nicolas Garcia
-🔗 GitHub: https://github.com/Nicolas-1990  
+🔗 GitHub: [Nicolas-1990](https://github.com/Nicolas-1990)
 📧 Email: nicolas_garcia1990@hotmail.com

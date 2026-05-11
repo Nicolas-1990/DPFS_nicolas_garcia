@@ -4,12 +4,14 @@ const db = require("../database/models");
 
 const usersController = {
 
-    login: (req,res)=>{
-        res.render("users/login", {
-        errors: {}
+    login: (req, res) => {
+
+    res.render("users/login", {
+        errors: {},
+        redirect: req.query.redirect || ""
     });
-    
-    },
+
+},
     
     processLogin: async (req, res) => {
     const errors = validationResult(req);
@@ -57,7 +59,9 @@ const usersController = {
             });
         }
 
-        return res.redirect("/products");
+        const redirectTo = req.body.redirect || "/products";
+
+        return res.redirect(redirectTo);
 
     } catch (error) {
         console.error("❌ ERROR LOGIN:", error);

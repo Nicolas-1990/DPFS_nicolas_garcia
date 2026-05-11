@@ -7,16 +7,18 @@
 
     <form class="form" action="/users/login" method="POST">
 
+      <input type="hidden" name="redirect" value="<%= redirect || '' %>">
+
       <label>Email</label>
       <input type="email" name="email" required placeholder="Ingresa tu email">
       <% if (errors && errors.email) { %>
-        <p class="error-message"><%= errors.email.msg %></p>
+        <p class="error"><%= errors.email.msg %></p>
       <% } %>
 
       <label>Contraseña</label>
       <input type="password" name="password" required placeholder="Ingresa tu contraseña">
       <% if (errors && errors.password) { %>
-        <p class="error-message"><%= errors.password.msg %></p>
+        <p class="error"><%= errors.password.msg %></p>
       <% } %>
 
       <div class="remember">

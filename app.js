@@ -5,6 +5,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const rememberMiddleware = require("./src/middlewares/rememberMiddleware");
 const userLoggedMiddleware = require("./src/middlewares/userLoggedMiddleware");
+const methodOverride = require('method-override');
 
 const usersAPIRoutes = require('./src/routes/api/users');
 const productsAPIRoutes = require('./src/routes/api/products');
@@ -15,6 +16,15 @@ app.use(cors());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(methodOverride('_method'));
+app.use(methodOverride(function (req, res) {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    const method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));
 
 app.use(cookieParser());
 
@@ -77,6 +87,10 @@ app.use("/", productsRoutes);
 
 const usersRoutes = require("./src/routes/users");
 app.use("/users", usersRoutes);
+
+const cartRoutes = require("./src/routes/cart");
+
+app.use("/cart", cartRoutes);
 
 app.listen(3002, () => {
   console.log("Servidor en http://localhost:3002");

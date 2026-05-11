@@ -29,6 +29,8 @@
       <span class="badge fisico">FÍSICO</span>
     <% } %>
 
+    <div class="card-content">
+
     <img src="/images/products/<%= product.images[0] %>">
 
     <h3><%= product.name %></h3>
@@ -53,6 +55,7 @@
 
   <% } %>
 
+  </div>
 </div>
 
     <% if(product.type === "digital"){ %>
@@ -62,6 +65,7 @@
     <% } else { %>
       <p class="stock unavailable">Sin stock</p>
     <% } %>
+      <p class="low-stock <%= (product.stock > 0 && product.stock <= 3) ? 'visible' : '' %>">¡Últimas unidades!</p>
 
     <p class="category">
       <%= product.category ? product.category.name : "Sin categoría" %>
@@ -71,15 +75,19 @@
       <%= product.brand ? product.brand.name : "Sin marca" %>
     </p>
 
-<div class="product-actions">
+<div class="cart-actions">
 
   <a href="/products/<%= product.id %>" class="btn btn-primary">
     Ver detalle
   </a>
 
-  <button class="btn btn-secondary add-to-cart" data-id="<%= product.id %>">
-    Agregar al carrito
-  </button>
+      <button 
+        class="btn btn-secondary add-to-cart <%= product.stock === 0 && product.type !== 'digital' ? 'disabled' : '' %>" 
+        data-id="<%= product.id %>"
+        <%= product.stock === 0 && product.type !== 'digital' ? 'disabled' : '' %>
+        >
+        <%= product.stock === 0 && product.type !== 'digital' ? 'Producto agotado' : 'Agregar al carrito' %>
+      </button>
 
   <% if (userLogged && userLogged.role === "admin") { %>
     <div class="admin-actions">
@@ -88,7 +96,8 @@
         <button type="submit" class="btn btn-edit">Editar</button>
       </form>
 
-      <form action="/products/<%= product.id %>/delete" method="POST">
+      <form action="/products/<%= product.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
         <button type="submit" class="btn btn-danger">Eliminar</button>
       </form>
 
@@ -102,42 +111,10 @@
 
 <% }) %>
 
-<script>
-document.querySelectorAll(".add-to-cart").forEach(btn => {
-  btn.addEventListener("click", async () => {
-    const id = btn.dataset.id;
-
-    const res = await fetch(`/cart/add/${id}`, {
-      method: "POST"
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-
-      const total = data.cart.reduce((acc, item) => acc + item.quantity, 0);
-
-      const cartCount = document.getElementById("cart-count");
-      if (cartCount) {
-        cartCount.textContent = total;
-
-        cartCount.classList.add("bump");
-        setTimeout(() => cartCount.classList.remove("bump"), 200);
-      }
-
-      showToast("✔ Producto agregado");
-
-    } else {
-      showToast(data.message, "error");
-    }
-  });
-});
-</script>
-
 </main>
+
 <div class="create-product">
   <% if (userLogged && userLogged.role === "admin") { %>
-  <div class="create-product">
     <a href="/products/create" class="btn btn-primary">Crear Nuevo Producto</a>
   </div>
 <% } %>

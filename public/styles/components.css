@@ -1,0 +1,518 @@
+/* CARD */
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 280px;
+  width: 100%;
+  background: #1e1e1e;
+  border-radius: 10px;
+  padding: 15px;
+  height: 100%;
+  
+  transition: transform .25s ease, box-shadow .25s ease;
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp .5s ease forwards;
+  
+  cursor: pointer;
+}
+
+.product-card .btn {
+  width: 100%;
+}
+
+.card-content {
+  flex-grow: 1;
+}
+
+.related-grid .product-card {
+  background: #0f1214;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  max-width: 220px;
+}
+
+.product-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 5px 15px rgba(0,0,0,.6);
+}
+
+.product-card:nth-child(1) { animation-delay: 0.05s; }
+.product-card:nth-child(2) { animation-delay: 0.1s; }
+.product-card:nth-child(3) { animation-delay: 0.15s; }
+.product-card:nth-child(4) { animation-delay: 0.2s; }
+
+.product-card form {
+  width: 100%;
+}
+
+.product-card form .btn {
+  width: 100%;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.product-card .add-to-cart {
+  width: 100%;
+}
+
+.cart-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* TABS */
+
+.tabs {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.tab {
+  position: relative;
+  padding: 6px 0;
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.2s;
+  border-radius: 6px;
+}
+
+.tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #00bcd4;
+  transition: width 0.3s ease;
+}
+
+.tab:hover::after {
+  width: 100%;
+}
+
+.tab:hover {
+  background: #00bcd4;
+  color: #000;
+}
+
+.tab.active {
+  color: #fff;
+  font-weight: bold;
+}
+
+.tab.active::after {
+  width: 100%;
+}
+
+/* TITULO */
+
+.product-card h3 {
+  font-size: 16px;
+  min-height: 48px;
+  line-height: 1.3;
+}
+
+/* IMAGEN */
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.product-card:hover img {
+  transform: scale(1.02);
+}
+
+/* OVERLAY */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* FORMS */
+
+.form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form button {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.form-group input:focus {
+  outline: none;
+  border: 1px solid #00bfff;
+}
+
+.form-container button {
+  margin-top: 15px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form label {
+  margin-top: 15px;
+}
+
+.form input {
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.form input:focus {
+  outline: none;
+  border: 1px solid #00bfff;
+}
+
+.remember {
+  margin: 15px 0;
+}
+
+.forgot {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #00bfff;
+  text-decoration: none;
+}
+
+.redirect {
+  margin-top: 20px;
+  font-size: 14px;
+  display:block;
+}
+
+.redirect a{
+  color:#00bfff;
+  margin-left:5px;
+}
+
+/* FORM ERRORS */
+
+.error {
+  color: #e53935;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.error.small {
+  font-size: 12px;
+}
+
+/* PRECIOS */
+
+.price-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 5px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #00e0ff;
+}
+
+.old-price {
+  font-size: 14px;
+  text-decoration: line-through;
+  color: #888;
+}
+
+.discount {
+  display: inline-block;
+  font-size: 12px;
+  width: fit-content;
+  background: #00bcd4;
+  color: #000;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+/* STOCK */
+
+.stock {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.available {
+  color: #2ecc71;
+}
+
+.unavailable {
+  color: #ff4c4c;
+}
+
+.digital {
+  color: #00bfff;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.fisico {
+  color: #2ecc71;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.low-stock {
+  min-height: 20px;
+  font-weight: bold;
+  color: #ff9800;
+
+  opacity: 0;
+  transform: translateY(5px);
+
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.low-stock.visible {
+  opacity: 1;
+  transform: translateY(0);
+
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from { opacity: 1; }
+  to { opacity: 0.6; }
+}
+
+/* BASE BUTTON */
+
+.btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* TIPOS DE BOTÓN */
+
+.btn-primary {
+  background: #00bcd4;
+  color: #000;
+  text-align: center;
+}
+
+.btn-secondary {
+  background: #fff;
+  color: #000;
+}
+
+.btn-delete {
+  margin-top: 8px;
+  background: none !important;
+  color: #e53935;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn-delete:hover {
+  text-decoration: underline;
+}
+
+.btn-danger {
+  background: #e53935;
+  color: #fff;
+}
+
+.btn-edit {
+  background: #00bcd4;
+  color: #000;
+}
+
+.add-to-cart:active {
+  transform: scale(0.95);
+}
+
+.add-to-cart.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  background-color: #555;
+  border-color: #555;
+}
+
+.add-to-cart.added {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+/* LAYOUT BOTONES */
+
+.product-actions {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 6px;
+}
+
+/* BOTÓN CREAR */
+
+.create-product {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.create-product .btn {
+  display: inline-block;
+}
+
+/* ANIMATIONS / UI */
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#cart-count.bump {
+  transform: scale(1.3);
+  color: #4caf50;
+  transition: transform 0.2s ease;
+}
+
+/* TOAST */
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.success {
+  background: #4caf50;
+}
+
+.toast.warning {
+  background: #ffc107;
+  color: #000;
+}
+
+.toast.error {
+  background: #e53935;
+}
+
+.toast.info {
+  background: #2196f3;
+}
+
+/* BADGE */
+
+.badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.badge.digital {
+  background:#00bfff;
+  color:black;
+}
+
+.badge.fisico {
+  background:#2ecc71;
+  color:black;
+}

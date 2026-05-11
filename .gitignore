@@ -5,3 +5,7 @@ dashboard/node_modules/
 
 .DS_Store
 Thumbs.db
+
+.vscode/
+
+npm-debug.log

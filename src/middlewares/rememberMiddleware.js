@@ -9,7 +9,7 @@ async function rememberMiddleware(req, res, next) {
     });
 
     if (user) {
-      req.session.user = user;
+      req.session.userLogged = user;
     }
   }
 

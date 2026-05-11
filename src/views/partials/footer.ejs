@@ -12,51 +12,9 @@
 
 <div id="toast" class="toast"></div>
 
-  <script>
-    function showToast(message, type = "success", duration = 2000) {
-    const toast = document.getElementById("toast");
-
-    toast.textContent = message;
-    toast.className = "toast show";
-
-    if (type === "error") {
-      toast.classList.add("error");
-    }
-
-    setTimeout(() => {
-      toast.classList.remove("show");
-    }, duration);
-  }
-  </script>
-
-<script>
-const menuIcon = document.getElementById("menu-icon");
-const nav = document.querySelector(".nav");
-const overlay = document.getElementById("overlay");
-
-menuIcon.addEventListener("click", () => {
-  nav.classList.toggle("active");
-  overlay.classList.toggle("active");
-});
-
-overlay.addEventListener("click", () => {
-  nav.classList.remove("active");
-  overlay.classList.remove("active");
-});
-
-document.querySelectorAll(".nav a").forEach(link => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("active");
-    overlay.classList.remove("active");
-  });
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    nav.classList.remove("active");
-    overlay.classList.remove("active");
-  }
-});
-</script>
+<script src="/js/toast.js"></script>
+<script src="/js/navbar.js"></script>
+<script src="/js/cart.js"></script>
+<script src="/js/gallery.js"></script>
   
 </body>

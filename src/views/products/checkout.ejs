@@ -1,0 +1,104 @@
+<%- include("../partials/head", { title: "Checkout" }) %>
+<%- include("../partials/header") %>
+
+<main class="main">
+
+  <div class="checkout-container">
+
+    <h2>Resumen de compra</h2>
+
+    <% cart.forEach(item => { %>
+
+  <div class="checkout-item">
+
+    <div class="checkout-product">
+
+      <img 
+        src="/images/products/<%= item.image %>" 
+        alt="<%= item.name %>"
+        class="checkout-img"
+      >
+
+      <div class="checkout-info">
+        <p class="checkout-name"><%= item.name %></p>
+
+        <span class="checkout-type">
+          <%= item.type.toUpperCase() %>
+        </span>
+      </div>
+
+    </div>
+
+    <div class="checkout-price">
+      <%= item.quantity %> x $<%= item.price %>
+    </div>
+
+  </div>
+
+<% }) %>
+
+    <div class="checkout-total">
+      <p>Subtotal: $ <%= total %></p>
+    <% if (onlyDigital) { %>
+      <p class="digital-delivery">
+        Entrega inmediata
+      </p>
+    <% } else { %>
+      <p>Envío: $ <%= shipping %></p>
+    <% } %>
+      <h3>Total: $ <%= finalTotal %></h3>
+    </div>
+
+    <form action="/cart/checkout" method="POST">
+
+  <div class="checkout-actions">
+
+    <div class="payment-methods">
+
+      <h3>Método de pago</h3>
+
+      <label>
+        <input type="radio" name="payment" value="credito" checked>
+        <i class="fa-regular fa-credit-card"></i>
+        Tarjeta de crédito
+      </label>
+
+      <label>
+        <input type="radio" name="payment" value="debito">
+        <i class="fa-solid fa-money-check"></i>
+        Tarjeta de débito
+      </label>
+
+      <label>
+        <input type="radio" name="payment" value="transferencia">
+        <i class="fa-solid fa-building-columns"></i>
+        Transferencia bancaria
+      </label>
+
+      <label>
+        <input type="radio" name="payment" value="efectivo">
+        <i class="fa-solid fa-money-bill-wave"></i>
+        Efectivo
+      </label>
+
+    </div>
+
+    <p class="checkout-subtitle">
+      Revisá tu compra antes de confirmar
+    </p>
+
+    <button type="submit" class="btn btn-primary checkout-pay">
+      Pagar ahora
+    </button>
+
+  </div>
+
+</form>
+
+  </div>
+
+  </div>
+
+</main>
+
+<%- include("../partials/footer") %>

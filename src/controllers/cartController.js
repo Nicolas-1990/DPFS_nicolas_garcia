@@ -1,3 +1,5 @@
+const cartTotals = require("../helpers/cartTotals");
+const cartResponse = require("../helpers/cartResponse");
 const db = require("../database/models");
 
 module.exports = {
@@ -20,6 +22,7 @@ module.exports = {
       return res.json({
         success: false,
         message: "Este producto ya está en el carrito",
+        type: "error",
         cart
       });
     }
@@ -35,14 +38,27 @@ module.exports = {
 
   } else {
 
+    if (dbProduct.stock === 0) {
+      return cartResponse(
+        res,
+        false,
+        "Producto sin stock",
+        "error",
+        cart
+      );
+    }
+
     if (existing) {
 
-      if (existing.quantity >= dbProduct.stock) {
-        return res.json({
-          success: false,
-          message: "Sin stock disponible"
-        });
-      }
+    if (existing && existing.quantity >= dbProduct.stock) {
+      return cartResponse(
+        res,
+        false,
+        "Sin stock disponible",
+        "error",
+        cart
+      );
+    }
 
       existing.quantity++;
 
@@ -65,31 +81,20 @@ module.exports = {
   return res.json({
     success: true,
     message: "✔ Producto agregado",
+    type: "success",
     cart
   });
 },
 
-view: function(req, res) {
+view: (req, res) => {
+
   const cart = req.session.cart || [];
 
-  let total = cart.reduce((acc, item) => {
-    return acc + item.price * item.quantity;
-  }, 0);
-
-  const hasItems = cart.length > 0;
-
-  const onlyDigital = hasItems && cart.every(item => item.type === "digital");
-
-  const shipping = !hasItems ? 0 : (onlyDigital ? 0 : 1500);
-
-  const finalTotal = total + shipping;
+  const totals = cartTotals(cart);
 
   return res.render("products/productCart", {
     cart,
-    total,
-    onlyDigital,
-    shipping,
-    finalTotal
+    ...totals
   });
 },
 
@@ -107,6 +112,7 @@ view: function(req, res) {
     return res.json({
       success: false,
       message: "Producto digital (cantidad fija)",
+      type: "error",
       cart
     });
   }
@@ -116,7 +122,9 @@ view: function(req, res) {
   if (product.quantity >= dbProduct.stock) {
     return res.json({
       success: false,
-      message: "Sin stock disponible"
+      message: "Sin stock disponible",
+      type: "error",
+      cart
     });
   }
 
@@ -127,6 +135,7 @@ view: function(req, res) {
   return res.json({
     success: true,
     message: "✔ Cantidad actualizada",
+    type: "success",
     cart
   });
 },
@@ -139,19 +148,36 @@ view: function(req, res) {
   const item = cart.find(p => p.id == id);
 
   if (!item) {
-    return res.json({ success: false });
-  }
+    return res.json({
+    success: false,
+    message: "Producto no encontrado",
+    type: "error",
+    cart
+  });
+}
 
   if (item.type === "digital") {
     return res.json({
       success: false,
       message: "Producto digital (cantidad fija)",
+      type: "error",
       cart
     });
   }
 
   if (item.quantity > 1) {
     item.quantity--;
+
+    if (item.quantity === 1) {
+      req.session.cart = cart;
+
+      return res.json({
+        success: true,
+        message: "⚠️ Stock mínimo alcanzado",
+        type: "warning",
+        cart
+      });
+    }
   }
 
   req.session.cart = cart;
@@ -159,8 +185,50 @@ view: function(req, res) {
   return res.json({
     success: true,
     message: "✔ Cantidad actualizada",
+    type: "success",
     cart
   });
+},
+
+checkout: (req, res) => {
+
+  const cart = req.session.cart || [];
+
+  if (cart.length === 0) {
+    return res.redirect("/cart");
+  }
+
+  const totals = cartTotals(cart);
+
+  res.render("products/checkout", {
+    cart,
+    ...totals
+  });
+},
+
+processCheckout: async (req, res) => {
+
+  const cart = req.session.cart || [];
+
+  for (const item of cart) {
+
+    const product = await db.Product.findByPk(item.id);
+
+    if (product && product.type !== "digital") {
+
+      if (product.stock < item.quantity) {
+        return res.redirect("/cart");
+      }
+
+      product.stock -= item.quantity;
+
+      await product.save();
+    }
+  }
+
+  req.session.cart = [];
+
+  res.render("products/checkoutSuccess");
 },
 
   delete: (req, res) => {
@@ -175,6 +243,7 @@ view: function(req, res) {
   return res.json({
     success: true,
     message: "Producto eliminado",
+    type: "error",
     cart: newCart
   });
 },
@@ -187,14 +256,18 @@ view: function(req, res) {
   if (!req.session.userLogged) {
   return res.json({
     success: false,
-    message: "Debes iniciar sesión para comprar"
+    message: "Debes iniciar sesión para comprar",
+    type: "warning",
+    cart
     });
   }
 
   if (cart.length === 0) {
     return res.json({
       success: false,
-      message: "El carrito está vacío"
+      message: "El carrito está vacío",
+      type: "warning",
+      cart
     });
   }
 
@@ -203,6 +276,7 @@ view: function(req, res) {
   return res.json({
     success: true,
     message: "Compra realizada con éxito 🎉",
+    type: "success",
     cart: []
   });
 }

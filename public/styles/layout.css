@@ -1,0 +1,101 @@
+.main {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0px auto;
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+  position: static;
+  height: auto;
+  width: auto;
+  background: transparent;
+  box-shadow: none;
+  align-items: center;
+}
+
+.nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 15px;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: #00bfff;
+}
+
+.user-info {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.avatar {
+  width:30px;
+  height:30px;
+  border-radius:50%;
+}
+
+.logo {
+  flex: 1;
+  color: white;
+  margin-right: auto;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* GRID PRODUCTOS */
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 280px));
+  justify-content: center;
+  gap: 20px;
+}
+
+/* FOOTER */
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  color: #fff;
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+.footer-text {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+footer .icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+footer .icons a i {
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}

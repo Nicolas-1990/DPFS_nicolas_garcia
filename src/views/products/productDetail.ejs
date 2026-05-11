@@ -50,6 +50,7 @@
       <% } else { %>
         <p class="stock unavailable">Sin stock</p>
       <% } %>
+        <p class="low-stock <%= (product.stock > 0 && product.stock <= 3) ? 'visible' : '' %>">¡Últimas unidades!</p>
 
       <p class="<%= product.type === 'digital' ? 'digital' : 'fisico' %>">Producto: <%= product.type === "digital" ? "Digital" : "Físico" %></p>
       <p>Categoría: <%= product.category ? product.category.name : "Sin categoría" %></p>
@@ -64,10 +65,14 @@
 
       <p><%= product.description %></p>
 
-    <div class="cart-actions">
+    <div class="cart-actions-detail">
 
-        <button class="btn add-to-cart" data-id="<%= product.id %>">
-          Agregar al carrito
+        <button 
+        class="btn btn-secondary add-to-cart <%= product.stock === 0 && product.type !== 'digital' ? 'disabled' : '' %>" 
+        data-id="<%= product.id %>"
+        <%= product.stock === 0 && product.type !== 'digital' ? 'disabled' : '' %>
+        >
+        <%= product.stock === 0 && product.type !== 'digital' ? 'Producto agotado' : 'Agregar al carrito' %>
         </button>
       </div>
     </div>
@@ -93,76 +98,7 @@
   </div>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
-  const container = document.getElementById("zoomContainer");
-  const image = document.getElementById("mainImage");
-  const thumbs = document.querySelectorAll(".thumb");
-
-  thumbs.forEach(img => {
-    img.addEventListener("click", () => {
-
-      image.style.transform = "scale(1)";
-      image.style.transformOrigin = "center";
-
-      image.src = img.src;
-
-  thumbs.forEach(t => t.classList.remove("active"));
-    img.classList.add("active");
-
-    });
-  });
-
-  container.addEventListener("mousemove", (e) => {
-    const rect = container.getBoundingClientRect();
-
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-    image.style.transformOrigin = `${x}% ${y}%`;
-    image.style.transform = "scale(2)";
-  });
-
-  container.addEventListener("mouseleave", () => {
-    image.style.transform = "scale(1)";
-    image.style.transformOrigin = "center";
-  });
-
-});
-</script>
-
-<script>
-document.querySelectorAll(".add-to-cart").forEach(btn => {
-  btn.addEventListener("click", async () => {
-    const id = btn.dataset.id;
-
-    const res = await fetch(`/cart/add/${id}`, {
-      method: "POST"
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-
-      const total = data.cart.reduce((acc, item) => acc + item.quantity, 0);
-
-      const cartCount = document.getElementById("cart-count");
-      if (cartCount) {
-        cartCount.textContent = total;
-
-        cartCount.classList.add("bump");
-        setTimeout(() => cartCount.classList.remove("bump"), 200);
-      }
-
-      showToast("✔ Producto agregado");
-
-    } else {
-      showToast(data.message, "error");
-    }
-  });
-});
-</script>
+<script src="/js/gallery.js"></script>
 
 </main>
 

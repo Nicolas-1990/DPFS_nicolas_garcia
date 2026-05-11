@@ -69,6 +69,7 @@
   <% } else { %>
     <p class="stock unavailable">Sin stock</p>
   <% } %>
+    <p class="low-stock <%= (product.stock > 0 && product.stock <= 3) ? 'visible' : '' %>">¡Últimas unidades!</p>
 
     <a href="/products/<%= product.id %>" class="btn btn-primary">Ver detalle</a>
 
@@ -77,36 +78,6 @@
   <% }) %>
 
 </div>
-
-<script>
-document.querySelectorAll(".add-to-cart").forEach(btn => {
-  btn.addEventListener("click", async () => {
-    const id = btn.dataset.id;
-
-    const res = await fetch(`/cart/add/${id}`, {
-      method: "POST"
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-
-      const total = data.cart.reduce((acc, item) => acc + item.quantity, 0);
-
-      const cartCount = document.getElementById("cart-count");
-      if (cartCount) {
-        cartCount.textContent = total;
-
-        cartCount.classList.add("bump");
-        setTimeout(() => cartCount.classList.remove("bump"), 200);
-      }
-
-    } else {
-      showToast(data.message, "error");
-    }
-  });
-});
-</script>
 
 </main>
 
