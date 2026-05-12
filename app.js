@@ -1,3 +1,4 @@
+require("dotenv").config();
 const cors = require("cors");
 const express = require("express");
 const path = require("path");
@@ -29,7 +30,7 @@ app.use(methodOverride(function (req, res) {
 app.use(cookieParser());
 
 app.use(session({
-    secret: "mi_secreto_super_seguro",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false
 }));
@@ -92,6 +93,8 @@ const cartRoutes = require("./src/routes/cart");
 
 app.use("/cart", cartRoutes);
 
-app.listen(3002, () => {
-  console.log("Servidor en http://localhost:3002");
+const PORT = process.env.PORT || 3002;
+
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en puerto ${PORT}`);
 });
