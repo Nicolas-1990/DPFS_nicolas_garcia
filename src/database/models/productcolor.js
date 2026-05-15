@@ -19,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'ProductColor',
+    tableName: 'productcolors',
+    freezeTableName: true,
+    timestamps: false
   });
   return ProductColor;
 };
