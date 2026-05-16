@@ -7,7 +7,7 @@
 
     <form class="form" action="/users/login" method="POST">
 
-      <input type="hidden" name="redirect" value="<%= redirect || '' %>">
+      <input type="hidden" name="redirect" value="<%= typeof redirect !== 'undefined' ? redirect : '' %>">
 
       <label>Email</label>
       <input type="email" name="email" required placeholder="Ingresa tu email">
