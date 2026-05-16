@@ -8,21 +8,27 @@ Aplicación full stack de e-commerce orientada a hardware y videojuegos, con aut
 - MySQL
 - Sequelize
 - React (dashboard administrativo)
+- Render
+- Railway
 
-🛠 Instalación
+## 🛠 Instalación local
 
-# Backend
+### Backend
 
+```bash
 npm install
 nodemon app.js
+```
 
-# Frontend (React Dashboard)
+### Frontend (Dashboard React)
 
+```bash
 cd dashboard
 npm install
 npm start
+```
 
-📦 Funcionalidades
+## 📦 Funcionalidades
 - Registro y login de usuarios
 - CRUD de productos
 - Carrito dinámico sin recarga de página
@@ -34,13 +40,19 @@ npm start
 - API REST (/api/products - /api/users)
 - Dashboard en React consumiendo la API
 
-📊 Dashboard
+## 📊 Dashboard
 Panel administrativo con:
 - Total de productos
 - Total de usuarios
 - Categorías
 - Último producto
 - Listado de productos
+
+## 🌐 Deploy online
+
+Proyecto desplegado en producción:
+
+https://nextlevel-pc.onrender.com/
 
 ## Variables de entorno
 
@@ -58,8 +70,8 @@ SESSION_SECRET=
 - Usuario: navegación, carrito y compra
 
 🔗 Endpoints
-- http://localhost:3002/api/products
-- http://localhost:3002/api/users
+- /api/products
+- /api/users
 
 ## 🗂️ Estructura del proyecto
 
@@ -101,7 +113,7 @@ SESSION_SECRET=
 ![Dashboard 1](public/screenshots/dashboard1.png)
 ![Dashboard 2](public/screenshots/dashboard2.png)
 
-## Base de datos
+## 🗄️ Base de datos local
 
 1. Abrir phpMyAdmin
 2. Crear base de datos: gaming_store
@@ -120,10 +132,11 @@ Documentación oficial utilizada durante el desarrollo:
 
 ## 🚀 Próximas mejoras
 
-- Deploy público del proyecto
-- Base de datos remota
 - Persistencia de imágenes en la nube
-- Mejoras de UX y rendimiento
+- Mejoras de UX del carrito sin recarga de página
+- Optimización de rendimiento y consultas
+- Implementación de pasarela de pagos
+- Panel de administración avanzado
 
 ## 👨‍💻 Autor
 Nicolas Garcia
