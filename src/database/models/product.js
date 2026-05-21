@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
 
   }, {
 
-    tableName: "products",
+    tableName: "Products",
     freezeTableName: true
 
   });
@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
 
     Product.belongsTo(models.Category,{
       foreignKey:"category_id",
-      as:"category"
+      as:"category",
+      constraints:false
     });
 
     Product.belongsTo(models.Brand,{
