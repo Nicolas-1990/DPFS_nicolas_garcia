@@ -1,5 +1,4 @@
 module.exports = (sequelize, DataTypes) => {
-
   const Color = sequelize.define("Color", {
     id: {
       type: DataTypes.INTEGER,
@@ -9,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {
     tableName: "colors",
+    freezeTableName: true,
     timestamps: true
   });
 

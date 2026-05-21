@@ -19,7 +19,8 @@ const usersController = {
     if (!errors.isEmpty()) {
         return res.render("users/login", {
             errors: errors.mapped(),
-            oldData: req.body
+            oldData: req.body,
+            redirect: req.body.redirect || ""
         });
     }
 
@@ -33,7 +34,8 @@ const usersController = {
                 errors: {
                     email: { msg: "Email no registrado" }
                 },
-                oldData: req.body
+                oldData: req.body,
+                redirect: req.body.redirect || ""
             });
         }
 
@@ -47,7 +49,8 @@ const usersController = {
                 errors: {
                     password: { msg: "Contraseña incorrecta" }
                 },
-                oldData: req.body
+                oldData: req.body,
+                redirect: req.body.redirect || ""
             });
         }
 

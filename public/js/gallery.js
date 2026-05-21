@@ -1,4 +1,3 @@
-console.log("gallery loaded");
 const mainImage = document.getElementById("mainImage");
 
 const thumbnails = document.querySelectorAll(".thumb");

@@ -1,6 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
   const Brand = sequelize.define("Brand", {
     name: DataTypes.STRING
+  }, {
+    tableName: "brands",
+    freezeTableName: true
+
   });
   
   Brand.associate = function(models){
