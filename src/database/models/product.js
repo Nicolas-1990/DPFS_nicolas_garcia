@@ -33,7 +33,8 @@ module.exports = (sequelize, DataTypes) => {
 
     Product.belongsTo(models.Brand,{
       foreignKey:"brand_id",
-      as:"brand"
+      as:"brand",
+      constraints:false
     });
 
     Product.belongsToMany(models.Color,{

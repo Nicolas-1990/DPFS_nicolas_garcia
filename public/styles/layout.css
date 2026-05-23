@@ -87,13 +87,13 @@ footer {
   align-items: center;
 }
 
-footer .icons {
+.footer-icons {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-footer .icons a i {
+.footer-icons a i {
   font-size: 17px;
   display: flex;
   align-items: center;
