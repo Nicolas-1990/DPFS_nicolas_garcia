@@ -116,10 +116,6 @@ SESSION_SECRET=
 ![Dashboard 1](public/screenshots/dashboard1.png)
 ![Dashboard 2](public/screenshots/dashboard2.png)
 
-- Responsive
-![Responsive 1](public/screenshots/responsive1.png)
-![Responsive 2](public/screenshots/responsive2.png)
-
 ## 🗄️ Base de datos local
 
 1. Abrir phpMyAdmin
