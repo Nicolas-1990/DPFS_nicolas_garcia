@@ -96,11 +96,14 @@ SESSION_SECRET=
 ![Listado de productos 2](public/screenshots/list2.png)
 
 - Detalle de producto
-![Detalle de producto](public/screenshots/detail.png)
+![Detalle de producto 1](public/screenshots/detail1.png)
+![Detalle de producto 2](public/screenshots/detail2.png)
 
 - Carrito
 ![Carrito 1](public/screenshots/cart1.png)
 ![Carrito 2](public/screenshots/cart2.png)
+![Carrito 3](public/screenshots/cart3.png)
+![Carrito 4](public/screenshots/cart4.png)
 
 - Inicio de sesión
 ![Login](public/screenshots/login.png)
@@ -108,6 +111,11 @@ SESSION_SECRET=
 - Registro
 ![Registro 1](public/screenshots/register1.png)
 ![Registro 2](public/screenshots/register2.png)
+
+- Responsive
+![Responsive 1](public/screenshots/responsive1.jpeg)
+![Responsive 2](public/screenshots/responsive2.jpeg)
+![Responsive 2](public/screenshots/responsive3.jpeg)
 
 - Dashboard
 ![Dashboard 1](public/screenshots/dashboard1.png)
