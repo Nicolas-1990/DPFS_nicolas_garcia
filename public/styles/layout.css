@@ -11,6 +11,9 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  max-width: 1400px;
+  margin: 0 20px;
+  padding: 0 20px;
 }
 
 .nav {
@@ -24,14 +27,17 @@
   align-items: center;
 }
 
-.nav a {
+.nav > a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   color: #ffffff;
   text-decoration: none;
   margin-left: 15px;
   transition: color 0.3s ease;
 }
 
-.nav a:hover {
+.nav > a:hover {
   color: #00bfff;
 }
 
@@ -41,6 +47,16 @@
   gap:10px;
 }
 
+.user-info a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.user-info a:hover {
+  color: #00bfff;
+}
+
 .avatar {
   width:30px;
   height:30px;
@@ -48,9 +64,16 @@
 }
 
 .logo {
-  flex: 1;
   color: white;
   margin-right: auto;
+}
+
+.logo img {
+  margin-left: 20px;
+  height: 100px;
+  width:auto;
+  display:block;
+  object-fit:contain;
 }
 
 .menu-icon {

@@ -129,9 +129,14 @@ detail: async (req, res) => {
 
     productParsed.images = images;
 
+    const { Op } = require("sequelize");
+
     let relatedProducts = await db.Product.findAll({
     where: {
-    category_id: product.category_id
+    category_id: product.category_id,
+    id: {
+        [Op.ne]: product.id
+      }
     },
     limit: 4
 });

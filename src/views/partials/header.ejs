@@ -1,12 +1,12 @@
 <header class="header">
-  <h1 class="logo">NextLevel PC</h1>
+  <a href="/" class="logo"><img src="../images/logo.png" alt="Logo"></a>
 
   <nav class="nav">
 
     <a href="/">Home</a>
     <a href="/products">Productos</a>
 
-    <a href="/cart">🛒 Carrito (<span id="cart-count"><%= totalItems %></span>)</a>
+    <a href="/cart"><span>🛒</span>Carrito (<span id="cart-count"><%= totalItems %></span>)</a>
 
     <% if (userLogged) { %>
       <div class="user-info">
