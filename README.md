@@ -112,14 +112,13 @@ SESSION_SECRET=
 ![Registro 1](public/screenshots/register1.png)
 ![Registro 2](public/screenshots/register2.png)
 
-- Responsive
-![Responsive 1](public/screenshots/responsive1.png)
-![Responsive 2](public/screenshots/responsive2.png)
-![Responsive 2](public/screenshots/responsive3.png)
-
 - Dashboard
 ![Dashboard 1](public/screenshots/dashboard1.png)
 ![Dashboard 2](public/screenshots/dashboard2.png)
+
+- Responsive
+![Responsive 1](public/screenshots/responsive1.png)
+![Responsive 2](public/screenshots/responsive2.png)
 
 ## 🗄️ Base de datos local
 
