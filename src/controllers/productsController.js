@@ -68,6 +68,8 @@ index: async function(req, res) {
     subQuery: false
   });
 
+console.log("Cantidad de productos:", products.length);
+
   products = products.map(product => {
   let images = [];
 
@@ -163,7 +165,7 @@ detail: async (req, res) => {
 });
 
     res.render("products/productDetail", {
-    product,
+    product: productParsed,
     images,
     relatedProducts
 });

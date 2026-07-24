@@ -2,8 +2,9 @@ module.exports = (sequelize, DataTypes) => {
   const Brand = sequelize.define("Brand", {
     name: DataTypes.STRING
   }, {
-    tableName: "Brands",
-    freezeTableName: true
+    tableName: "brands",
+    freezeTableName: true,
+    timestamps: false
 
   });
   

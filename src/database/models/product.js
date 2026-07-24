@@ -18,9 +18,9 @@ module.exports = (sequelize, DataTypes) => {
 
   }, {
 
-    tableName: "Products",
-    freezeTableName: true
-
+    tableName: "products",
+    freezeTableName: true,
+    timestamps: false
   });
 
   Product.associate = function(models){
@@ -38,11 +38,14 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Product.belongsToMany(models.Color,{
-      through: "productcolors",
-      foreignKey:"product_id",
-      otherKey:"color_id",
-      as:"colors"
-    });
+    through: {
+    model: models.ProductColor,
+    timestamps: false
+    },
+    foreignKey:"product_id",
+    otherKey:"color_id",
+    as:"colors"
+  });
 
   };
 

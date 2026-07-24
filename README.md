@@ -76,15 +76,24 @@ SESSION_SECRET=
 ## 🗂️ Estructura del proyecto
 
 ```txt
-├── controllers/     # Lógica de cada ruta
-├── middlewares/     # Autenticación y validaciones
-├── routes/          # Definición de rutas Express
-├── views/           # Plantillas EJS
-├── public/          # CSS, JS e imágenes
-├── database/        # Modelos Sequelize y configuración
-├── helpers/         # Funciones reutilizables del carrito
-├── app.js           # Entry point
-└── package.json
+├── dashboard/
+├── db/
+├── docs/
+├── migrations/
+├── public/
+├── seeders/
+├── SQL/
+├── src/
+├── .env.example
+├── .gitignore
+├── app.js
+├── Dockerfile
+├── hash.js
+├── migration.load
+├── package-lock.json
+├── package.json
+├── README.md
+└── retro.md
 ```
 
 📸 Capturas del proyecto

@@ -1,11 +1,21 @@
+# Dependencias
 node_modules/
 dashboard/node_modules/
 
+# Variables de entorno
 .env
 
+# Backups de base de datos
+*.dump
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema operativo
 .DS_Store
 Thumbs.db
 
+# Editor
 .vscode/
-
-npm-debug.log
