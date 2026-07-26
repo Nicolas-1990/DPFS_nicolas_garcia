@@ -89,7 +89,6 @@ SESSION_SECRET=
 ├── app.js
 ├── Dockerfile
 ├── hash.js
-├── migration.load
 ├── package-lock.json
 ├── package.json
 ├── README.md

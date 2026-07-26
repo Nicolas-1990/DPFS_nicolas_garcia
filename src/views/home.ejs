@@ -35,7 +35,9 @@
   <% } %>
 
   <!-- IMAGEN -->
-  <img src="/images/products/<%= product.images[0] %>">
+  <a href="/products/<%= product.id %>">
+    <img src="/images/products/<%= product.images[0] %>" alt="<%= product.name %>">
+  </a>
 
   <!-- NOMBRE -->
   <h3><%= product.name %></h3>

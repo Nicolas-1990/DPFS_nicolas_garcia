@@ -31,7 +31,9 @@
 
     <div class="card-content">
 
-    <img src="/images/products/<%= product.images[0] %>"
+    <a href="/products/<%= product.id %>">
+      <img src="/images/products/<%= product.images[0] %>" alt="<%= product.name %>">
+    </a>
 
     <h3><%= product.name %></h3>
 
