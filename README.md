@@ -9,7 +9,7 @@ Aplicación full stack de e-commerce orientada a hardware y videojuegos, con aut
 - Sequelize
 - React (dashboard administrativo)
 - Render
-- Railway
+- Neon
 
 ## 🛠 Instalación local
 
