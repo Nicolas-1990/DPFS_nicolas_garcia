@@ -1,6 +1,7 @@
 🛒 NextLevel PC - Full Stack Project
 
 Aplicación full stack de e-commerce orientada a hardware y videojuegos, con autenticación de usuarios, carrito dinámico, panel administrativo y API REST.
+Fue desarrollado como proyecto final de la certificación en **Programación Web Full Stack** de *Digital House*. 
 
 🚀 Tecnologías
 - Node.js
@@ -149,7 +150,9 @@ Documentación oficial utilizada durante el desarrollo:
 - Implementación de pasarela de pagos
 - Panel de administración avanzado
 
-## 👨‍💻 Autor
-Nicolas Garcia
-🔗 GitHub: [Nicolas-1990](https://github.com/Nicolas-1990)
-📧 Email: nicolas_garcia1990@hotmail.com
+## 👤 Autor.
+
+**Nicolás García**
+
+- 🔗 GitHub: [Nicolas-1990](https://github.com/Nicolas-1990)
+- 📧 Email: nicolas_garcia1990@hotmail.com
